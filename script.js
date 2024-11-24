@@ -1,6 +1,6 @@
 let numberInput = document.getElementById("number")
 let convertBtn = document.getElementById("convert-btn");
-let outputWrapper = document.getElementById("output-container");
+let outputWrapper = document.getElementById("output");
 
 // main logic of the program
 let romanNUmeralConverter = (num) =>{
@@ -14,6 +14,7 @@ let romanNUmeralConverter = (num) =>{
        ['L',50],
        ['XL',40],
        ['X',10],
+       ['IX',9],
        ['V',5],
        ['IV',4],
        ['I',1]
@@ -30,35 +31,30 @@ let romanNUmeralConverter = (num) =>{
     };
 
 // output 
-const  output = (romanNumber) =>{
+const  output = (message) =>{
     outputWrapper.style.display="block";
-    outputWrapper.innerHTML = `<p>${romanNumber}</p>`
+    outputWrapper.innerHTML = `<p>${message}</p>`
 }
 
 // input valdation and ouput
 let inputValidator = (e) => {
     e.preventDefault();
     let number = Number(numberInput.value);
-    if (number == "" ){
-           outputWrapper.style.display="block";
-           outputWrapper.innerHTML = `<p>Please enter a valid number.</p>`
+
+    if (!number)  {
+        output(`Please enter a valid number.`);
     }
     else if (number < 0) {
-        outputWrapper.style.display="block";
-        outputWrapper.innerHTML = `<p>Please enter a number greater than or equal to 1. </p>`
+      
+      output( `Please enter a number greater than or equal to 1.`);
     }
     
     else if (number >= 4000){
-        outputWrapper.style.display="block";
-           outputWrapper.innerHTML = `<p>Please enter a number less than or equal to 1.</p>`
-        
+       output(`Please enter a number less than or equal to 3999.`);    
     }
     else{
         romanNUmeralConverter(number);
     }
 }
-
-
-
 
 convertBtn.addEventListener("click",inputValidator)
