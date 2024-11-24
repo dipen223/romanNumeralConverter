@@ -22,15 +22,6 @@ let inputValidator = (e) => {
 }
 
 
-const outputContainer = () =>{
-    outputWrapper.innerHTML = "";
-    outputWrapper.innerHTML += `2
-    <p>
-    Please enter a valid number.
 
-    </p>
-    `
-
-}
 
 convertBtn.addEventListener("click",inputValidator)
